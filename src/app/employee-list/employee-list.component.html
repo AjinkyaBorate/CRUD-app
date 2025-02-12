@@ -1,0 +1,64 @@
+<div class="bg-dark text-center text-light">
+  <h2>CRUD APP</h2>
+</div>
+<div class="design" >
+  <div class=" ps-5 pe-5 pb-3 pt-3 mt-3 border border-3 border-dark rounded w-75" style="background-color: lightblue;">
+    <h3 class="text-center">Add Employees</h3>
+    <input
+      class="form-control form-control-sm mb-2"
+      type="text"
+      placeholder="Enter ID"
+      [(ngModel)]="id"
+      aria-label=".form-control-lg example"
+      [readonly]="status"
+    />
+    <input
+      class="form-control form-control-sm mb-2"
+      type="text"
+      placeholder="Enter Name"
+      [(ngModel)]="name"
+      aria-label=".form-control-lg example"
+    />
+    <input
+      class="form-control form-control-sm mb-2"
+      type="text"
+      placeholder="Enter Salary"
+      [(ngModel)]="sal"
+      aria-label=".form-control-lg example"
+    />
+    <button
+      class="btn btn-primary form-control form-control-sm"
+      (click)="addEmployee()">
+      {{btnname}}
+    </button>
+  </div>
+
+  <div class="w-75">
+    <h3 class="">Employee List    :</h3>
+    <div *ngIf="elist.length == 0">
+      <p>Employee List is Empty</p>
+    </div>
+    <div *ngIf="elist.length != 0" class="" style="width:100%">
+      <table class="table  border border-3 border-dark rounded" >
+        <thead>
+          <tr>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Employee Salary</th>
+            <th colspan="2" class="text-center">Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of elist">
+            <td>{{ e.eid }}</td>
+            <td>{{ e.ename }}</td>
+            <td>{{ e.esal }}</td>
+            <td><button class="btn btn-warning" (click)="editEmployee(e)">Edit</button></td>
+            <td><button class="btn btn-danger" (click)="deleteEmployee(e)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
